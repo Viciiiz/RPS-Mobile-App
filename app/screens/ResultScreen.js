@@ -1,12 +1,44 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
 
 export default function ResultScreen({route, navigation}){
+    // your play
     const {yourPlay} = route.params;
+    // random number for computer play
+    const rand = Math.random();
+    // computer play
+    const computerPlay = (num) => {
+        if (num < 0.3) return "Rock";
+        else if (num < 0.65 && num >= 0.3) return "Paper";
+        else return "Scissor";
+    }
+    // result of the match
+    const match = (you, comp) => {
+        if (you == "Rock"){
+            switch(comp){
+                case "Rock": return "Draw";
+                case "Paper": return "You Lose...";
+                case "Scissor": return "You Win!";
+            }
+        } else if (you == "Paper"){
+            switch(comp){
+                case "Rock": return "You Win!";
+                case "Paper": return "Draw";
+                case "Scissor": return "You Lose...";
+            }
+        } else {
+            switch(comp){
+                case "Rock": return "You Loose...";
+                case "Paper": return "You Win!";
+                case "Scissor": return "Draw";
+            }
+        }
+    }
+    
 
     return (
         <View style={styles.buttonView}>
-            {/* <Text></Text> */}
+            <Text style={styles.text}>{"\nYour play:    " + yourPlay + "\n\nComputer:    " + computerPlay(rand) + "\n\n" + match(yourPlay, computerPlay(rand)) + "\n" }</Text>
             {/* play again */}
             <View >
                 <TouchableOpacity style={styles.buttonPlay} onPress={()=>navigation.navigate('Play')}>
@@ -54,5 +86,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         paddingHorizontal: 20,
+    },
+    text: {
+        top: -40,
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'center',
+        marginTop: 20,
+        backgroundColor: 'yellow',
+        borderRadius: 50
     },
 });

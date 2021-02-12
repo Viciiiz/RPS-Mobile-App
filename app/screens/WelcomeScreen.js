@@ -1,11 +1,13 @@
 import React from 'react';
-import PlayScreen from './PlayScreen';
-import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
+// import PlayScreen from './PlayScreen';
+import { TouchableOpacity, StyleSheet, View, Text, Image } from 'react-native';
+import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 
 export default function WelcomeScreen({navigation}) {
 
     return (
         <View style={styles.buttonView}>
+            {/* <Image style={styles.image} source={require("../assets/RPS.png")}></Image> */}
              {/* play button */}
             <TouchableOpacity style={styles.playTouch} 
                               onPress={()=>navigation.navigate('Play')}>
@@ -27,7 +29,8 @@ const styles = StyleSheet.create({
     buttonView:{
         flex: 1,
         justifyContent: "center",
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        // backgroundImage: "../assets/RPS.png"
     },
     exitTouch: {
         alignItems: "center",
@@ -35,6 +38,10 @@ const styles = StyleSheet.create({
         padding: 10,
         top: 10,
         borderRadius: 10
+    },
+    image:{
+        flex: 1,
+        resizeMode: 'cover'
     },
     playTouch: {
         alignItems: "center",

@@ -1,28 +1,23 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
 
-export default function PlayScreen(){
+export default function PlayScreen({navigation}){
+
     return (
         <View style={styles.viewBox}>
-            {/* exit */}
-            <View style={styles.exitView}>
-                <TouchableOpacity style={styles.exitBox}>
-                    <Text style={styles.exitText}>{'<'}</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.viewPlay}>        
+            <View  style={styles.viewPlay}>      
                 {/* rock */}
-                <TouchableOpacity style={styles.rockBox}>
+                <TouchableOpacity style={styles.rockBox} onPress={()=>navigation.navigate('Result', {yourPlay: 'Rock'})}>
                     <Image source={require('../assets/rock-up.png')} style={styles.image}/>
                     <Text style={styles.text}>Rock</Text>
                 </TouchableOpacity>
                 {/* paper */}
-                <TouchableOpacity style={styles.paperBox}>
+                <TouchableOpacity style={styles.paperBox} onPress={()=>navigation.navigate('Result', {yourPlay: 'Paper'})}>
                     <Image source={require('../assets/paper-up.png')} style={styles.image}/>
                     <Text style={styles.text}>Paper</Text>
                 </TouchableOpacity>
                 {/* scissor */}
-                <TouchableOpacity style={styles.scissorBox}>
+                <TouchableOpacity style={styles.scissorBox} onPress={()=>navigation.navigate('Result', {yourPlay: 'Scissor'})}>
                     <Image source={require('../assets/scissor-up.png')} style={styles.image}/>
                     <Text style={styles.text}>Scissor</Text>
                 </TouchableOpacity>
@@ -32,22 +27,6 @@ export default function PlayScreen(){
 }
 
 const styles = StyleSheet.create({
-    exitBox: {
-        alignItems: 'center',
-        backgroundColor: '#02F87D',
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        marginLeft: 10,
-        marginTop: 5
-    },
-    exitText: {
-        fontSize: 40,
-        fontWeight: 'bold'
-    },
-    exitView: {
-        width: 80,
-        top: -20
-    },
     paperBox: {
         backgroundColor: '#02F87D',
         alignItems: "center",
@@ -79,10 +58,10 @@ const styles = StyleSheet.create({
     },
     viewPlay: {
         alignItems: "center",
-        top: 10
+        // top: 10
     },
     image: {
-        height: 160,
-        width: 160    
+        height: 150,
+        width: 150    
     },
 });

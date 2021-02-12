@@ -1,11 +1,14 @@
 import React from 'react';
+import PlayScreen from './PlayScreen';
 import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 
-export default function WelcomeScreen(props) {
+export default function WelcomeScreen({navigation}) {
+
     return (
         <View style={styles.buttonView}>
              {/* play button */}
-            <TouchableOpacity style={styles.playTouch} >
+            <TouchableOpacity style={styles.playTouch} 
+                              onPress={()=>navigation.navigate('Play')}>
                 <Text style={styles.text}>Play</Text>
             </TouchableOpacity>
              {/* setting button */}
